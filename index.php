@@ -1,7 +1,3 @@
 <?php
-	echo "this is index.php";
-	echo "<br/>第一次修改";
-	echo "<br/>创建分支后第一次修改";
-	echo "<br/>冲突：dev修改";
-	echo "<br/>测试环境修改";
+	echo "这是测试提交的";
 ?>
