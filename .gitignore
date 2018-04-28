@@ -1,3 +1,4 @@
 *.log
 *.sh
-./git_pull.php
+/git_pull.php
+
