@@ -1,0 +1,40 @@
+<div class="header_top">
+  <div class="header_top0 container">
+  <div class="header_top1">
+  <div class="fss">
+	<if condition="$UserInfo.login eq 0">
+		<span>Hi 欢迎来到妥妥运车 </span>
+		<a  class="deng1" href="__MODULE__/Login/pclogin/">请登录</a>
+		<a  class="deng2" href="__MODULE__/Register/index/">请注册</a>
+	<else/>
+		<span>Hi&nbsp;{$UserInfo.userInfo.user_name}&nbsp;</span>
+		<h3>
+		<a  class="deng3" href="__MODULE__/Personal/personalInfo">个人中心</a>
+		<dl>
+			<dt><a href="__MODULE__/Personal/personalInfo">个人资料</a></dt>
+			<dt><a href="__MODULE__/MyOrder/index">我的订单</a></dt>
+			<dt><a href="__MODULE__/MyCoupon/index">我的优惠券</a></dt>
+		</dl>
+		</h3>
+		<a class="deng4" href="#" onclick="loginout();">退出</a>
+		<script>
+			function loginout(){
+				$.post('__MODULE__/Login/logout/',function(data){
+						window.location.reload();
+				})
+			}
+		</script>
+	</if>
+	</div>
+  </div>
+  <div class="header_top2">
+	<p>
+		<a  class="te11" href="">&nbsp;<img src="__FRONT__/images/timg.png"></a>
+		<a  class="te12" href="">&nbsp;<img src="__FRONT__/images/wskk1.png"></a>
+		<!-- <a  class="te13" href="">&nbsp;</a> -->
+		<span>400-877-1107</span>
+	</p>
+  
+  </div>
+  </div>
+</div>

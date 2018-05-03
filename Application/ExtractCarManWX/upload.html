@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="__JS__/jquery-1.7.2.min.js"></script>
+<script src="__JS__/jquery.Huploadify.js"></script>
+<script src="__JS__/jquerytool_1.0v.js"></script>
+<title>单文件上传</title>
+</head>
+<body>
+	<form action="#" method="post">
+	<div >
+		<label>封面图</label>
+		<div>
+			<if condition="$data.path eq ''">
+				<img src="__PUBLIC__/images/pic1.jpg" id="oneclick" style="max-width:230px;max-height:140px;"/>
+			<else />
+				<img src="{$data.path}" id="oneclick" style="max-width:850px;max-height: 360px;"/>
+			</if>
+		</div>
+	</div>
+	<input type="hidden" id="thumb_pic" name='thumb_pic' value="">
+	<div id="upload" style="display:none;"></div>
+	</form>
+	<input type="submit" value="点击上传" />
+</body>
+<script>
+$(function(){
+	var up = $('#upload').Huploadify({
+		auto:true,
+		fileTypeExts:'*.jpg;*.gif;*.png;*.jpeg',
+		multi:false,
+		fileSizeLimit:1024,
+		showUploadedPercent:false,
+		showUploadedSize:false,
+		removeTimeout:1000,
+		abs:1,//隐藏按钮序号
+		uploader:'{:U("Base/upload")}',//上传方法路径
+		canshu:'OPINION',//特征值:用于进行上传限制
+		onUploadStart:function(file){
+			console.log(file.name+'开始上传');
+		},
+		onInit:function(obj){
+			console.log('初始化');
+			console.log(obj);
+		},
+		onUploadComplete:function(file,data){
+			var datas = $.parseJSON(data);
+			if(datas.flag){
+				$("#thumb_pic").val(datas.fileurl);
+				$("#oneclick").attr('src',datas.fileurl);
+			}else{
+				$.anewAlert(datas.msg);
+			}
+		},
+	});
+	$("#oneclick").click(function(){
+		$("#file_upload_1-button").click();
+	});
+	
+});
+</script>
+</html>

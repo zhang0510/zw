@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=0.6,user-scalable=no">
+<title>妥妥运车</title>
+<!-- Bootstrap core CSS -->
+<link href="__EXWX__/style/bootstrap.css" rel="stylesheet" type="text/css">
+<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link href="__EXWX__/style/style.css" rel="stylesheet" type="text/css">
+<link href="__EXWX__/style/style480.css" rel="stylesheet" type="text/css">
+<link href="__EXWX__/style/style320.css" rel="stylesheet" type="text/css">
+
+<script src="__EXWX__/js/jquery-1.js"></script>
+<script src="__EXWX__/js/bootstrap.js"></script>
+<script src="__EXWX__/js/jquery.SuperSlide.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+	$(document).ready(function(){
+		//alert(location.href.split('#')[0]);
+		var url = location.href.split('#')[0];
+		$.post('__MODULE__/Order/getJsSign',{'url':url},function(data){
+			var json=JSON.stringify(data);
+			$("#ceshi").html(json);
+			if(data!=''){
+				wx.config({
+	    		    debug:true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+	    		    appId:data.appId, // 必填，公众号的唯一标识
+	    		    timestamp:data.timestamp, // 必填，生成签名的时间戳
+	    		    nonceStr:data.nonceStr, // 必填，生成签名的随机串
+	    		    signature:data.signature,// 必填，签名，见附录1
+	    		    jsApiList: [    // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+	    		                    //'checkJsApi',
+	    		                    //'getLocation',
+	    		                    'chooseImage',
+	    		                    'uploadImage',
+	    		                    'downloadImage'
+
+	    					   ]
+
+			});
+			}
+		})
+	})
+
+</script>
+<body class="body1">
+<script type="">
+
+</script>
+<div class="wxnav">
+<a class="get1" href=""><</a>
+<h2>个人中心</h2>
+
+</div>
+<!--content-->
+<div class="wcenter0">
+ <div class="wcenter01">
+   <div class="wcentera">
+  <h2><img src="{$userInfo.headimgurl}" style="max-width: 33%;"></h2>
+   <p>{$member.car_name}</p>
+   </div>
+   <div class="wcenterb">
+    <div  class="mm1 mm1a" data-url="__MODULE__/Order/waitExtractOrder/mark/TC">
+	<a>
+	 <h2>提车</h2>
+	 <span id="ceshi"></span>
+	 </a>
+	</div>
+	<div  class="mm1 mm1a"  data-url="__MODULE__/Order/waitExtractOrder/mark/TD">
+	<a >
+	 <h2>提短</h2>
+	 <span></span>
+	 </a>
+	</div>
+    <div  class="mm1 mm1a" data-url="__MODULE__/Order/waitExtractOrder/mark/SC">
+	<a >
+	 <h2>送车</h2>
+	 <span></span>
+	 </a>
+	</div>
+	 <div  class="mm1 mm1b" data-url="__MODULE__/Order/waitExtractOrder/mark/LS">
+	<a >
+	 <h2>历史提车信息</h2>
+	 <span></span>
+	 </a>
+	</div>
+	<input type="hidden" id="lat" value="" />
+	<input type="hidden" id="lon" value="" />
+	 <!--
+	 <div  class="mm1 mm1c">
+	 onclick="WeixinJSBridge.call('closeWindow');" 
+	 <a href="__MODULE__/Weixin/ceshi" >
+	 <h2>测试</h2>
+	 <span></span>
+	 </a>
+	</div>
+	-->
+   <div  class="mm1d">
+	 <p>提示：如需要更改密码，微信联系管理员协助更改</p>
+	</div>
+   </div>
+ </div>
+</div>
+ <script>
+ $(document).ready(function(){
+ wx.getLocation({
+	    type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+	    success: function (res) {
+	        var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+	        var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+	        $("#lat").val(latitude);
+	        $("#lon").val(longitude);
+	    }
+	});
+ });
+$(".mm1").click(function(){
+	var url=$(this).attr("data-url");
+	var lat=$("#lat").val();
+	if(lat==''){
+		lat=0;
+	}
+	var lon=$("#lon").val();
+	if(lon==''){
+		lon=0;
+	}
+	alert(lat);
+	window.location.href=url+"/lat/"+lat+"/lon/"+lon;
+})
+</script>
+</body>
+</html>

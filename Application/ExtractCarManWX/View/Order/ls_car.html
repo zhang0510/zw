@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<title>车妥妥</title>
+<!-- Bootstrap core CSS -->
+<link href="__EXWX__/style/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="__EXWX__/style/style.css" rel="stylesheet" type="text/css">
+<link href="__EXWX__/style/style480.css" rel="stylesheet" type="text/css">
+<link href="__EXWX__/style/style320.css" rel="stylesheet" type="text/css">
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="__EXWX__/js/jquery-1.js"></script>
+<script src="__EXWX__/js/bootstrap.js"></script>
+<script src="__JS__/Scroll.js"></script>
+
+<body>
+
+
+<!--content-->
+<div class="order_body">
+	<div class="order_main">	
+		<div class="order_list" id="div_owlist0_id">
+		 
+		    <foreach name="list" item="vo" key="k">
+			<div class="order_lisa" name="div_owlist_{$k}">
+				<div class="order_lisa1">
+					<h2><a href="">订单号：{$vo['order_code']}</a><span>类型：{$vo['yd_type']}</span></h2>
+				</div>
+				<div class="asct">
+					<div class="olist2">
+						<p><strong>车型：</strong>{$vo['order_info_type']}</p>
+						<p><strong>识别号：</strong>{$vo['order_info_carmark']}</p>
+						<p><strong>备注：</strong>{$vo['yd_mark']}</p>
+					</div>
+				</div>
+					<div class="asct ssss3">			         
+						<!-- <a href="__MODULE__/Order/complete/yd_id/{$vo['yd_id']}"><button>确认完成</button></a> -->
+				
+						<a href="__MODULE__/Order/verifyImgs/order_code/{$vo['order_code']}"><h2>查看验车照片</h2></a>
+			
+				</div>
+			</div>
+		    </foreach>
+			<input type="hidden" id="size_id" value="{$size}" />
+		</div>
+	</div>
+</div> 
+<script>
+	$("#mark_{$mark}").parent().addClass("on").siblings().removeClass("on");
+	window.onscroll = function (){
+		var sizes = $("#size_id").val();
+		var divObj = $("div[name^='div_owlist_']");
+		var size = divObj.size();
+		if(parseInt(sizes)>size){
+			var s = getScrollTop() + getClientHeight();
+			var m = getScrollHeight()-2;
+			if (m==s||m<s){
+				setTimeout(3000);
+				var size = size;
+				$.post("__MODULE__/Order/waitExtAjax",{startnum:size,mark:'LS'},function(data){
+						$("#div_owlist0_id").append(data);
+				});
+			}
+		}
+	}
+</script>
+
+
+<!--content-->
+
+</body></html>

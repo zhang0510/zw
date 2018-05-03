@@ -1,0 +1,72 @@
+<!--logo and nav-->
+	<nav class="navbar navbar-default">
+      <div id="sasa" class="container">
+	  <div class="head1"><a class="navbar-brand0" href="/"><img src="__FRONT__/images/logo.png"></a></div>
+   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <div id="navbar" class="collapse navbar-collapse">
+
+		 <div class="baotio">
+
+        <ul class="nav navbar-nav">
+            <li  <if condition="$Think.const.CONTROLLER_NAME  eq ''">class="active"</if>>
+			<h2><a href="/">首页</a></h2>
+
+			</li>
+
+		    <li <if condition="$Think.const.CONTROLLER_NAME  eq 'ProfessionalServices'">class="active"</if>><h2><a href="__MODULE__/ProfessionalServices/index/">妥妥服务</a></h2>
+					         <dl>
+				  <div class="fgrr"></div>
+
+				  <dd><a href="__MODULE__/Worklwt/lineDis">长途托运</a></dd>
+				  <dd><a href="__MODULE__/ProfessionalServices/sos">道路救援</a></dd>
+
+				 </dl>
+			</li>
+			</li>
+		    <li id="tt1"><h2><a href="javascript:;">托车优惠</a></h2>
+		         <dl>
+				  <div class="fgrr"></div>
+
+				  <dd><a href="__MODULE__/Worklwt/lineDisList">优惠线路</a></dd>
+				  <dd><a href="__MODULE__/GroupBuy/gotoGroupBuy">团购线路</a></dd>
+
+				 </dl>
+			</li>
+			</li>
+		    <li <if condition="$Think.const.CONTROLLER_NAME  eq 'SecurityGuarantee'">class="active"</if>><h2><a href="__MODULE__/SecurityGuarantee/index/">安全保障</a></h2>
+				<dl>
+				<div class="fgrr"></div>
+
+				  <dd><a href="__MODULE__/SecurityGuarantee/baoxian">全程保险</a></dd>
+				  <dd><a href="__MODULE__/SecurityGuarantee/fuwu">专业服务</a></dd>
+				  <dd><a href="__MODULE__/SecurityGuarantee/jianguan">专人监管</a></dd>
+
+				 </dl>
+			</li>
+			</li>
+		    <li  <if condition="$Think.const.CONTROLLER_NAME  eq  'AboutUs'">class="active"</if>><h2><a href="__MODULE__/AboutUs/index/">关于妥妥</a></h2>
+					<dl>
+					<div class="fgrr"></div>
+				  <dd><a href="__MODULE__/AboutUs/index">公司介绍</a></dd>
+				  <dd><a href="__MODULE__/AboutUs/nian">服务理念</a></dd>
+				  <dd><a href="__MODULE__/News/newsList">妥妥新闻</a></dd>
+
+				 </dl>
+			</li>
+			<li><h2><a href="__MODULE__/Ordersel/orderselView">运单查询</a></h2>
+
+			</li>
+
+	    </ul>
+
+		 </div>
+        </div>
+
+      </div>
+    </nav>
+<!--logo and nav-->

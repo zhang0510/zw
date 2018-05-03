@@ -1,0 +1,194 @@
+<!--footer-->
+   	<div class="footer-box">
+	<div class="footer-box1">
+	<div class="container">
+       <div class="dnn0">
+			 <div class="col-sm-6 col-md-2 jkl1">
+            	 	<div class="dnn1">
+					<h2><a href="javascript:;">车妥妥</a></h2>
+                    <dl>
+				<foreach name="tuoList" item="vo" key="k">
+					<if condition="$vo.title eq '我要运车'">
+						<dd><a href="__MODULE__/Order/quickOrderGo">{$vo.title}</a></dd>
+					<else />
+						<dd><a href="__MODULE__/Footer/detail/code/{$vo.article_code}">{$vo.title}</a></dd>
+					</if>
+				</foreach>
+					 <!--<dd><a href="">企业运车</a></dd>
+					 <dd><a href="">时效查询</a></dd>
+					 <dd><a href="">服务网点</a></dd>-->
+
+					</dl>
+                    </div>
+            </div>
+			<!-- <div class="col-sm-6 col-md-2 jkl1">
+            	 	<div class="dnn1">
+					<h2><a href="javascript:;">服务产品</a></h2>
+                    <dl>
+				<foreach name="serviceList" item="vo" key="k">
+					 <dd><a href="__MODULE__/Footer/detail/code/{$vo.article_code}">{$vo.title}</a></dd>
+				</foreach>
+
+					</dl>
+                    </div>
+            </div>-->
+			 <div class="col-sm-6 col-md-2 jkl1">
+            	 	<div class="dnn1">
+					<h2><a href="javascript:;">帮助中心</a></h2>
+                    <dl>
+				<foreach name="helpList" item="vo" key="k">
+					 <dd><a href="__MODULE__/Footer/detail/code/{$vo.article_code}">{$vo.title}</a></dd>
+				</foreach>
+					</dl>
+                    </div>
+            </div>
+
+			 <div class="col-sm-6 col-md-2 jkl1">
+            	 	<div class="dnn1">
+					<h2><a href="javascript:;">支付方式</a></h2>
+                    <dl>
+				<foreach name="payList" item="vo" key="k">
+					 <dd><a href="__MODULE__/Footer/detail/code/{$vo.article_code}">{$vo.title}</a></dd>
+				</foreach>
+					</dl>
+                    </div>
+            </div>
+			 <div class="col-sm-6 col-md-2 jkl1">
+            	 	<div class="dnn1">
+					<h2><a href="javascript:;">关于妥妥</a></h2>
+                    <dl>
+				<foreach name="aboutList" item="vo" key="k">
+					<if condition="$vo.title eq '关于我们'">
+						<dd><a href="__MODULE__/AboutUs/index/">{$vo.title}</a></dd>
+					<else />
+						<dd><a href="__MODULE__/Footer/detail/code/{$vo.article_code}">{$vo.title}</a></dd>
+					</if>
+				</foreach>
+
+					</dl>
+                    </div>
+            </div>
+	 <div class="col-sm-6 col-md-2 jkl1 jkl1a">
+            	 	<div class="dnn1  ffdsf">
+		           <img src="/Public/Front/images/wskk1.png">
+		           <div class="hoof2">
+ <div class="bdsharebuttonbox"><a title="分享到新浪微博" href="#" class="bds_tsina te11" data-cmd="tsina"></a>
+  <a title="分享到QQ好友" href="#" class="bds_sqq te12" data-cmd="sqq"></a>
+  <a title="分享到微信" href="#" class="bds_weixin te13" data-cmd="weixin"></a>
+  </div>
+
+
+  </div>
+
+                    </div>
+            </div>
+         </div>
+
+            </div>
+			<div class="fooh1">
+			  <div class="fooh2 container">
+			  <div class="fooh21">
+			   <p><span>©2016 信义安达物流 京ICP备16022345号-1 地址：北京市顺义区山子坟安达物流停车场</span></p>
+			   </div>
+
+			   </div>
+			</div>
+
+        </div>
+
+
+    </div>
+
+<!-- 留言框 -->
+
+  <script>
+  $(".qqr01 ul li").click(function(){
+	  $(this).addClass("on").siblings().removeClass('on');
+	  var tt=$(this).index();
+	  $(".part13  .part3b").eq(tt).show().siblings().hide();
+
+
+	  });
+
+	    $(".part12 ul li").click(function(){
+	  $(this).addClass("on").siblings().removeClass('on');
+	  var tt=$(this).index();
+	  $(".part13  .part3b").eq(tt).show().siblings().hide();
+
+
+	  });
+
+	      $(".part12 ul li").hover(function(){
+	  $(this).addClass("on").siblings().removeClass('on');
+	  var tt=$(this).index();
+	  $(".part13  .part3b").eq(tt).show().siblings().hide();
+
+
+	  });
+
+	    $(".inko").click(function(){
+	  $(this).siblings(".selected").show();
+
+	  $(this).siblings(".selected0").show();
+
+	  });
+	      $(".xiandan").click(function(){
+$(".korder0").animate({width:"100%"});
+
+	  });
+	      $(".close2").click(function(){
+	    	  $(".korder0").animate({width:"0%"});
+
+	    	  });
+
+
+
+
+	   $(".selected li").click(function(){
+	  $(this).parent().parent().hide();
+	   var oop= $(this).html();
+	  $(this).parent().parent().siblings('.inko').val(oop);
+
+	  });
+
+
+	    $(".mess1 p").click(function(){
+	  $(this).parent().parent().hide();
+
+	  });
+	    $('.xiandan').hide();
+	    $(function(){
+	    	$(window).scroll(function() {
+	    		if($(window).scrollTop() >= 400){
+	    			$('.xiandan').fadeIn(300);
+	    		}else{
+	    			$('.xiandan').fadeOut(300);
+	    		}
+	    	});
+
+	    });
+
+
+
+
+
+
+
+  </script>
+
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+
+
+
+
+
+
+
+<!--footer-->
+
+</body></html>
